@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Bank</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
+</head>
+
+<body>
+    <div class="page">
+        <header class="top-bar">
+            <div class="logo-area">
+                <div class="logo-text">ABB</div>
+            </div>
+            <nav class="main-nav">
+                <a href="#" class="active">Fərdi</a>
+                <a href="#">Biznes</a>
+                <a href="#">Haqqımızda</a>
+                <a href="#">İnvestorlar</a>
+                <a href="#">Əlaqə</a>
+            </nav>
+            <div class="top-actions">
+                <span class="icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <span class="lang">AZ</span>
+                <span class="icon"><i class="fa-solid fa-phone"></i></span>
+                <button class="cta">Xidmət şəbəkəsi</button>
+            </div>
+        </header>
+
+        <input type="radio" id="tab-kredit" name="product-tab" checked />
+        <input type="radio" id="tab-depozit" name="product-tab" />
+        <input type="radio" id="tab-avto" name="product-tab" />
+        <input type="radio" id="tab-ipoteka" name="product-tab" />
+
+        <section class="hero tabs-wrapper">
+            <h1 class="hero-title">İndi hesablayın</h1>
+            <div class="calculator-tabs">
+                <label for="tab-kredit">Kredit</label>
+                <label for="tab-depozit">Depozit</label>
+                <label for="tab-avto">Avtomobil krediti</label>
+                <label for="tab-ipoteka">İpoteka</label>
+            </div>
+        </section>
+
+        <div class="panels">
+            <section class="tab-panel" id="panel-kredit">
+                <div class="content-area">
+                    <div class="card">
+                        <div class="sliders">
+                            <div class="slider-group">
+                                <div class="slider-label-row">
+                                    <span class="label-title">Məbləğ</span>
+                                    <span class="slider-value"></span>
+                                </div>
+                                <input id="amount" type="range" min="300" max="50000" value="10000" />
+                                <div class="slider-footer">
+                                    <span class="min">300 ₼</span>
+                                    <span class="max">50 000 ₼</span>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <div class="slider-label-row">
+                                    <span class="label-title">Müddət</span>
+                                    <span class="slider-value"></span>
+                                </div>
+                                <input id="months" type="range" min="3" max="59" value="12" />
+                                <div class="slider-footer">
+                                    <span class="min">3 ay</span>
+                                    <span class="max">59 ay</span>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <div class="slider-label-row">
+                                    <span class="label-title">Faiz dərəcəsi</span>
+                                    <span class="slider-value"></span>
+                                </div>
+                                <input id="percent" type="range" min="10.9" max="31.9" value="12" />
+                                <div class="slider-footer">
+                                    <span class="min">10.9%</span>
+                                    <span class="max">31.9%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="payment-card">
+                        <div>
+                            <div class="payment-title">Aylıq kredit ödənişi</div>
+                            <div class="payment-main">
+                                <span class="amount"></span> <span class="currency">₼</span>
+                            </div>
+                        </div>
+                        <button class="payment-button">Davam et</button>
+                        <div class="payment-sub">İlkin hesablanma</div>
+                    </div>
+
+                </div>
+            </section>
+            <section class="tab-panel" id="panel-depozit">
+                <div class="content-area">
+                    <div class="card">
+                        <div class="sliders">
+                            <div style="display:flex; justify-content:space-between; gap:24px; margin-bottom:24px;">
+                                
+                                <!--<div style="display:inline-flex; background:#f3f4f6; border-radius:999px; padding:4px;">
+                                    <button
+                                        style="border:none; background:#000000; color:#ffffff; border-radius:999px; padding:6px 18px; font-size:13px; cursor:default;">
+                                        Hər ay
+                                    </button>
+                                     <button
+                                        style="border:none; background:transparent; color:#6b7280; border-radius:999px; padding:6px 18px; font-size:13px; cursor:default;">
+                                        Hər il
+                                    </button>
+                                </div> -->
+
+                                <div style="display:inline-flex; background:#f3f4f6; border-radius:999px; padding:4px;">
+                                    <button id="dep_azn" onclick="selectCurrency('AZN')"
+                                        style="border:none; background:#000000; color:#ffffff; border-radius:999px; padding:6px 18px; font-size:13px; cursor:default;">
+                                        AZN
+                                    </button>
+                                    <button id="dep_usd" onclick="selectCurrency('USD')"
+                                        style="border:none; background:transparent; color:#6b7280; border-radius:999px; padding:6px 18px; font-size:13px; cursor:default;">
+                                        USD
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <div class="slider-label-row">
+                                    <span class="label-title">Məbləğ</span>
+                                    <span id="dep_amount_value" class="slider-value">10 000 ₼</span>
+                                </div>
+                                <input id="dep_amount" type="range" min="300" max="3000000" value="10000" />
+                                <div class="slider-footer">
+                                    <span class="min">300 ₼</span>
+                                    <span class="max">3 000 000 ₼</span>
+                                </div>
+                            </div>
+                            <div class="slider-group" style="margin-top:24px;">
+                                <div class="slider-label-row" style="margin-bottom:14px;">
+                                    <span class="label-title">Müddət</span>
+                                </div>
+
+                                <div style="display:flex; gap:12px;">
+                                    <button class="dep-month" onclick="selectMonths(this, 3)"
+                                        style="width:40px; height:40px; border-radius:999px; border:2px solid #000000; display:flex; align-items:center; justify-content:center; font-size:13px;">
+                                        3
+                                    </button>
+                                    <button class="dep-month" onclick="selectMonths(this, 6)"
+                                        style="width:40px; height:40px; border-radius:999px; background:#f3f4f6; display:flex; align-items:center; justify-content:center; font-size:13px; color:#6b7280;">
+                                        6
+                                    </button>
+                                    <button class="dep-month" onclick="selectMonths(this, 12)"
+                                        style="width:40px; height:40px; border-radius:999px; background:#f3f4f6; display:flex; align-items:center; justify-content:center; font-size:13px; color:#6b7280;">
+                                        12
+                                    </button>
+                                    <button class="dep-month" onclick="selectMonths(this, 18)"
+                                        style="width:40px; height:40px; border-radius:999px; background:#f3f4f6; display:flex; align-items:center; justify-content:center; font-size:13px; color:#6b7280;">
+                                        18
+                                    </button>
+                                    <button class="dep-month" onclick="selectMonths(this, 24)"
+                                        style="width:40px; height:40px; border-radius:999px; background:#f3f4f6; display:flex; align-items:center; justify-content:center; font-size:13px; color:#6b7280;">
+                                        24
+                                    </button>
+                                    <button class="dep-month" onclick="selectMonths(this, 36)"
+                                        style="width:40px; height:40px; border-radius:999px; background:#f3f4f6; display:flex; align-items:center; justify-content:center; font-size:13px; color:#6b7280;">
+                                        36
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="payment-card">
+                        <div>
+                            <div class="payment-title">Ümumi qazanc</div>
+                            <div id="dep_total" class="payment-main">
+                                200.00 <span class="currency">₼</span>
+                            </div>
+                        </div>
+                        <hr style="border:none; border-top:1px solid rgba(255,255,255,0.35); margin:18px 0 12px;" />
+                        <div style="display:flex; justify-content:space-between; gap:32px; font-size:13px;">
+                            <div>
+                                <div style="opacity:0.85; margin-bottom:4px;">Hər ay ödənilən faiz</div>
+                                <div id="dep_monthly" style="font-size:18px; font-weight:600; color:#ffffff;">66.67 ₼
+                                </div>
+                            </div>
+                            <div>
+                                <div style="opacity:0.85; margin-bottom:4px;">Faiz dərəcəsi</div>
+                                <div id="dep_rate" style="font-size:18px; font-weight:600; color:#ffffff;">8 %</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="tab-panel" id="panel-avto">
+                <div class="content-area">
+                    <div class="card">
+                        <div style="display:flex; gap:10px; margin-bottom:28px;">
+                            <button id="car_electric" onclick="selectCarType('electric')" style="padding:6px 18px; background:#000; color:#fff; border-radius:999px; font-size:13px;">
+                                Elektrik
+                            </button>
+                            <button id="car_hybrid" onclick="selectCarType('hybrid')" style="padding:6px 18px; background:#f3f4f6; color:#6b7280; border-radius:999px; font-size:13px;">
+                                Hibrid
+                            </button>
+                            <button id="car_other" onclick="selectCarType('other')" style="padding:6px 18px; background:#f3f4f6; color:#6b7280; border-radius:999px; font-size:13px;">
+                                Digər
+                            </button>
+                        </div>
+                        <div class="sliders">
+                            <div class="slider-group">
+                                <div class="slider-label-row">
+                                    <span class="label-title">Avtomobilin qiyməti</span>
+                                    <span class="slider-value">50000 ₼</span>
+                                </div>
+                                <input id="car_price" type="range" min="300" max="500000" value="50000" />
+                                <div class="slider-footer">
+                                    <span class="min">300 ₼</span>
+                                    <span class="max">500000 ₼</span>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <div class="slider-label-row">
+                                    <span class="label-title">İlkin ödəniş faizi</span>
+                                    <span class="slider-value">20 %</span>
+                                </div>
+                                <input id="car_down" type="range" min="10" max="90" value="20" />
+                                <div class="slider-footer">
+                                    <span class="min">10 %</span>
+                                    <span class="max">90 %</span>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <div class="slider-label-row">
+                                    <span class="label-title">Kredit müddəti</span>
+                                    <span class="slider-value">24 ay</span>
+                                </div>
+                                <input id="car_months" type="range" min="3" max="60" value="24" />
+                                <div class="slider-footer">
+                                    <span class="min">3 ay</span>
+                                    <span class="max">60 ay</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="payment-card">
+                        <div>
+                            <div class="payment-title">Aylıq kredit ödənişi</div>
+                            <div id="car_monthly" class="payment-main">
+                                1920.52 <span class="currency">₼</span>
+                            </div>
+                        </div>
+
+                        <hr style="border:none; border-top:1px solid rgba(255,255,255,0.35); margin:18px 0;" />
+
+                        <div style="display:flex; justify-content:space-between; gap:48px; font-size:14px;">
+                            <div>
+                                <div style="opacity:.85; margin-bottom:4px;">Kredit məbləği</div>
+                                <div id="car_credit_amount" style="font-size:18px; font-weight:600;">40000 ₼</div>
+                            </div>
+                            <div>
+                                <div style="opacity:.85; margin-bottom:4px;">İllik faiz dərəcəsi</div>
+                                <div id="car_rate" style="font-size:18px; font-weight:600;">14 %</div>
+                            </div>
+                        </div>
+                        <div
+                            style="display:flex; justify-content:space-between; gap:48px; font-size:14px; margin-top:18px;">
+                            <div>
+                                <div style="opacity:.85; margin-bottom:4px;">Komissiya (0.5%, min 20 AZN)</div>
+                                <div id="car_commission" style="font-size:18px; font-weight:600;">2000 ₼</div>
+                            </div>
+                            <div>
+                                <div style="opacity:.85; margin-bottom:4px;">Ümumi ödəniş</div>
+                                <div id="car_total" style="font-size:18px; font-weight:600;">46092.48 ₼</div>
+                            </div>
+                        </div>
+                        <button class="payment-button" style="margin-top:24px;">Davam et</button>
+                        <div class="payment-sub">İlkin hesablanma</div>
+                    </div>
+                </div>
+            </section>
+            <section class="tab-panel" id="panel-ipoteka">
+                <div class="content-area">
+                    <div class="card">
+                        <div class="sliders">
+                            <div class="slider-group">
+                                <div class="slider-label-row">
+                                    <span class="label-title">Kredit məbləği</span>
+                                    <span id="ip_amount_text" class="slider-value">100000 ₼</span>
+                                </div>
+                                <input id="ip_amount" type="range" min="1" max="500000" value="100000" />
+                                <div class="slider-footer">
+                                    <span class="min">1 ₼</span>
+                                    <span class="max">500000 ₼</span>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <div class="slider-label-row">
+                                    <span class="label-title">Müddət</span>
+                                    <span id="ip_years_text" class="slider-value">12 il</span>
+                                </div>
+                                <input id="ip_years" type="range" min="1" max="25" value="12" />
+                                <div class="slider-footer">
+                                    <span class="min">1 il</span>
+                                    <span class="max">25 il</span>
+                                </div>
+                            </div>
+                            <div class="slider-group" style="margin-top:24px;">
+                                <div class="slider-label-row" style="margin-bottom:14px;">
+                                    <span class="label-title">İllik faiz dərəcəsi</span>
+                                </div>
+
+                                <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                                    <div class="rate-btn active" onclick="selectRate(this, 12)" style="padding:10px 16px; border-radius:999px; border:2px solid #000; font-size:13px; font-weight:500; min-width:40px; text-align:center;">
+                                        12%
+                                    </div>
+                                    <div class="rate-btn" onclick="selectRate(this, 4)" style="padding:10px 16px; background:#f3f4f6; border-radius:999px; color:#6b7280;">
+                                        4%</div>
+                                    <div class="rate-btn" onclick="selectRate(this, 7)" style="padding:10px 16px; background:#f3f4f6; border-radius:999px; color:#6b7280;">
+                                        7%</div>
+                                    <div class="rate-btn" onclick="selectRate(this, 8)" style="padding:10px 16px; background:#f3f4f6; border-radius:999px; color:#6b7280;">
+                                        8%</div>
+                                    <div class="rate-btn" onclick="selectRate(this, 11)" style="padding:10px 16px; background:#f3f4f6; border-radius:999px; color:#6b7280;">
+                                        11%</div>
+                                    <div class="rate-btn" onclick="selectRate(this, 13)" style="padding:10px 16px; background:#f3f4f6; border-radius:999px; color:#6b7280;">
+                                        13%</div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="payment-card">
+
+                        <div>
+                            <div class="payment-title">Aylıq kredit ödənişi</div>
+                            <div id="ip_monthly" class="payment-main">
+                                1313.42 <span class="currency">₼</span>
+                            </div>
+                        </div>
+
+                        <hr style="border:none; border-top:1px solid rgba(255,255,255,0.35); margin:18px 0;" />
+
+                        <div style="display:flex; justify-content:space-between; gap:48px; font-size:14px;">
+
+                            <div>
+                                <div style="opacity:.85; margin-bottom:4px;">Kredit məbləği</div>
+                                <div id="ip_total_amount" style="font-size:18px; font-weight:600;">100000 ₼</div>
+                            </div>
+
+                            <div>
+                                <div style="opacity:.85; margin-bottom:4px;">İllik faiz dərəcəsi</div>
+                                <div id="ip_rate" style="font-size:18px; font-weight:600;">12 %</div>
+                            </div>
+
+                        </div>
+
+                        <button class="payment-button" style="margin-top:24px;">Davam et</button>
+
+                        <div class="payment-sub">İlkin hesablanma</div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+        <section class="bottom-grid">
+            <div class="rates-card">
+                <div class="rates-header">
+                    <div>
+                        <div class="rates-title">Valyuta məzənnələri</div>
+                        <div class="rates-updated">Son yenilənmə: 08.12.2025</div>
+                    </div>
+                    <div class="rates-link">Bütün valyuta məzənnələri</div>
+                </div>
+                <table class="rates-table">
+                    <thead>
+                        <tr>
+                            <th>Valyuta</th>
+                            <th>Alış</th>
+                            <th>Satış</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="code">USD</td>
+                            <td>1.6970</td>
+                            <td>1.7020</td>
+                        </tr>
+                        <tr>
+                            <td class="code">EUR</td>
+                            <td>1.9418</td>
+                            <td>2.0111</td>
+                        </tr>
+                        <tr>
+                            <td class="code">100 RUB</td>
+                            <td>1.8900</td>
+                            <td>2.5500</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="converter-card">
+                <div>
+                    <div class="converter-title">Valyuta <br /> konvertoru</div>
+                    <div class="converter-subtitle">
+
+                    </div>
+                </div>
+
+                <div class="converter-row">
+                    <div class="converter-input">
+                        <input type="number" id="from" placeholder="0">
+                        <select id="fromCur">
+                            <option>AZN</option>
+                            <option>USD</option>
+                            <option>EUR</option>
+                            <option>RUB</option>
+                        </select>
+                    </div>
+
+                    <button class="converter-swap" onclick="convert()">⇅</button>
+
+                    <div class="converter-input">
+                        <input type="number" id="toValue" placeholder="0">
+                        <select id="to">
+                            <option>USD</option>
+                            <option>AZN</option>
+                            <option>EUR</option>
+                            <option>RUB</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
